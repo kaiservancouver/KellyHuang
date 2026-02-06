@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Coaching Services - Power, Influence & Board Diversity</title>
+    <meta name="description" content="Explore our specialized career coaching programs: Power & Influence, Promotion Strategy, and Get On Board diversity program. Transform your professional trajectory.">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Core Libraries -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css">
+    
+    <style>
+        :root {
+            --navy: #1a2332;
+            --charcoal: #2d3748;
+            --sage: #8fa68e;
+            --cream: #faf8f5;
+            --gold: #c6a96b;
+            --blue-gray: #718096;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--cream);
+            color: var(--charcoal);
+        }
+        
+        .services-bg {
+            background: linear-gradient(135deg, rgba(26, 35, 50, 0.9), rgba(143, 166, 142, 0.7)), url('resources/services-consultation.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .text-gradient {
+            background: linear-gradient(135deg, var(--navy), var(--sage));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(26, 35, 50, 0.15);
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--navy), var(--sage));
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(26, 35, 50, 0.3);
+        }
+        
+        .program-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(26, 35, 50, 0.1);
+            border: 1px solid rgba(143, 166, 142, 0.2);
+            overflow: hidden;
+        }
+        
+        .program-card.expanded {
+            box-shadow: 0 25px 50px rgba(26, 35, 50, 0.2);
+        }
+        
+        .program-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .program-content.expanded {
+            max-height: 1000px;
+        }
+        
+        .comparison-table {
+            background: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(26, 35, 50, 0.1);
+            overflow: hidden;
+        }
+        
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .stagger-delay-1 { transition-delay: 0.1s; }
+        .stagger-delay-2 { transition-delay: 0.2s; }
+        .stagger-delay-3 { transition-delay: 0.3s; }
+        
+        .nav-sticky {
+            backdrop-filter: blur(10px);
+            background: rgba(250, 248, 245, 0.95);
+            border-bottom: 1px solid rgba(143, 166, 142, 0.2);
+        }
+        
+        .best-fit-badge {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4">
+            <div class="flex justify-between items-center">
+                <div class="text-2xl font-bold text-gradient">
+                    Kaizen Career Coaching
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-700 hover:text-sage-600 font-medium transition-colors">Home</a>
+                    <a href="services.html" class="text-gray-700 hover:text-sage-600 font-medium transition-colors">Services</a>
+                    <a href="about.html" class="text-gray-700 hover:text-sage-600 font-medium transition-colors">About</a>
+                    <a href="contact.html" class="text-gray-700 hover:text-sage-600 font-medium transition-colors">Contact</a>
+                </div>
+                <button class="btn-primary px-6 py-2 rounded-full font-medium">
+                    Book Consultation
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="services-bg min-h-screen flex items-center relative">
+        <div class="max-w-7xl mx-auto px-6 py-20">
+            <div class="text-center text-white">
+                <h1 class="text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+                    Specialized Career Coaching Programs
+                </h1>
+                <p class="text-xl mb-8 text-gray-200 leading-relaxed max-w-3xl mx-auto">
+                    Three comprehensive programs designed to accelerate your professional growth, build strategic influence, and position you for executive leadership roles.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button onclick="scrollToPrograms()" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold">
+                        Explore Programs
+                    </button>
+                    <a href="contact.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-800 transition-all">
+                        Get Started
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Selector -->
+    <section id="programs-section" class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Choose Your Path to Success</h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Each program is designed to address specific career challenges and accelerate your professional development
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8 mb-16">
+                <!-- Power & Influence Program -->
+                <div class="program-card card-hover reveal stagger-delay-1" id="power-influence-card">
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                </svg>
+                            </div>
+                            <div class="best-fit-badge hidden" id="power-badge">Best Fit</div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-4">Power & Influence</h3>
+                        <p class="text-gray-600 mb-6">
+                            Diagnose your professional network and develop strategic influence. Learn to empower yourself and build meaningful connections that accelerate your career growth.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Duration:</span> 12 weeks
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Level:</span> Mid to Senior
+                            </div>
+                        </div>
+                        
+                        <button onclick="toggleProgram('power-influence')" class="w-full btn-primary py-3 rounded-lg font-semibold mb-4">
+                            Learn More
+                        </button>
+                        
+                        <button onclick="bookProgram('power-influence')" class="w-full border-2 border-blue-500 text-blue-500 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                            Book Consultation
+                        </button>
+                    </div>
+                    
+                    <div class="program-content" id="power-influence-content">
+                        <div class="px-8 pb-8 border-t border-gray-100">
+                            <h4 class="text-lg font-bold mb-4 mt-6">Program Curriculum</h4>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-blue-600">1</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Network Diagnostic Assessment</h5>
+                                        <p class="text-sm text-gray-600">Comprehensive analysis of your current professional network and influence mapping</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-blue-600">2</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Strategic Relationship Building</h5>
+                                        <p class="text-sm text-gray-600">Techniques for building authentic, high-value professional relationships</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-blue-600">3</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Executive Presence Development</h5>
+                                        <p class="text-sm text-gray-600">Build confidence, gravitas, and the ability to command attention and respect</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-blue-600">4</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Influence Without Authority</h5>
+                                        <p class="text-sm text-gray-600">Master the art of persuasion and impact across organizational levels</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-blue-50 rounded-lg p-4 mb-6">
+                                <h5 class="font-semibold text-blue-800 mb-2">Perfect For:</h5>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Mid-level managers seeking senior leadership roles</li>
+                                    <li>• Professionals looking to expand their influence</li>
+                                    <li>• Individuals wanting to build strategic networks</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-gray-800 mb-2">$4,500</div>
+                                <div class="text-sm text-gray-600 mb-4">12-week comprehensive program</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promotion Strategy Program -->
+                <div class="program-card card-hover reveal stagger-delay-2" id="promotion-strategy-card">
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                                </svg>
+                            </div>
+                            <div class="best-fit-badge hidden" id="promotion-badge">Best Fit</div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-4">Promotion Strategy</h3>
+                        <p class="text-gray-600 mb-6">
+                            Navigate transitions into new organizations, teams, or responsibilities with confidence. Strategic planning for your next career move.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Duration:</span> 16 weeks
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Level:</span> Senior to Executive
+                            </div>
+                        </div>
+                        
+                        <button onclick="toggleProgram('promotion-strategy')" class="w-full btn-primary py-3 rounded-lg font-semibold mb-4">
+                            Learn More
+                        </button>
+                        
+                        <button onclick="bookProgram('promotion-strategy')" class="w-full border-2 border-green-500 text-green-500 py-3 rounded-lg font-semibold hover:bg-green-50 transition-colors">
+                            Book Consultation
+                        </button>
+                    </div>
+                    
+                    <div class="program-content" id="promotion-strategy-content">
+                        <div class="px-8 pb-8 border-t border-gray-100">
+                            <h4 class="text-lg font-bold mb-4 mt-6">Program Curriculum</h4>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-green-600">1</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Transition Readiness Assessment</h5>
+                                        <p class="text-sm text-gray-600">Evaluate your preparedness for career transitions and identify gaps</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-green-600">2</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Strategic Positioning Plan</h5>
+                                        <p class="text-sm text-gray-600">Develop a comprehensive strategy for your next career move</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-green-600">3</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">90-Day Integration Roadmap</h5>
+                                        <p class="text-sm text-gray-600">Structured approach to succeeding in new roles and organizations</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-green-600">4</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Stakeholder Management</h5>
+                                        <p class="text-sm text-gray-600">Build key relationships and navigate organizational dynamics</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-green-50 rounded-lg p-4 mb-6">
+                                <h5 class="font-semibold text-green-800 mb-2">Perfect For:</h5>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Senior managers preparing for executive roles</li>
+                                    <li>• Professionals changing organizations or industries</li>
+                                    <li>• Leaders taking on expanded responsibilities</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-gray-800 mb-2">$6,500</div>
+                                <div class="text-sm text-gray-600 mb-4">16-week comprehensive program</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Board Diversity Program -->
+                <div class="program-card card-hover reveal stagger-delay-3" id="board-diversity-card">
+                    <div class="p-8">
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </div>
+                            <div class="best-fit-badge hidden" id="board-badge">Best Fit</div>
+                        </div>
+                        
+                        <h3 class="text-2xl font-bold mb-4">Get On Board</h3>
+                        <p class="text-gray-600 mb-6">
+                            Ready to heed the call for board diversity? Specialized program for executives preparing for board-level responsibilities and governance.
+                        </p>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Duration:</span> 20 weeks
+                            </div>
+                            <div class="text-sm text-gray-500">
+                                <span class="font-semibold">Level:</span> Executive
+                            </div>
+                        </div>
+                        
+                        <button onclick="toggleProgram('board-diversity')" class="w-full btn-primary py-3 rounded-lg font-semibold mb-4">
+                            Learn More
+                        </button>
+                        
+                        <button onclick="bookProgram('board-diversity')" class="w-full border-2 border-purple-500 text-purple-500 py-3 rounded-lg font-semibold hover:bg-purple-50 transition-colors">
+                            Book Consultation
+                        </button>
+                    </div>
+                    
+                    <div class="program-content" id="board-diversity-content">
+                        <div class="px-8 pb-8 border-t border-gray-100">
+                            <h4 class="text-lg font-bold mb-4 mt-6">Program Curriculum</h4>
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-purple-600">1</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Board Readiness Evaluation</h5>
+                                        <p class="text-sm text-gray-600">Comprehensive assessment of board-level competencies and gaps</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-purple-600">2</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Governance Fundamentals</h5>
+                                        <p class="text-sm text-gray-600">Master fiduciary duties, oversight responsibilities, and board dynamics</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-purple-600">3</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Board Placement Strategy</h5>
+                                        <p class="text-sm text-gray-600">Strategic approach to identifying and securing board opportunities</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start">
+                                    <div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-3 mt-1">
+                                        <span class="text-xs font-bold text-purple-600">4</span>
+                                    </div>
+                                    <div>
+                                        <h5 class="font-semibold text-gray-800">Stakeholder Engagement</h5>
+                                        <p class="text-sm text-gray-600">Build relationships with board recruiters and governance committees</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-purple-50 rounded-lg p-4 mb-6">
+                                <h5 class="font-semibold text-purple-800 mb-2">Perfect For:</h5>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Senior executives seeking board roles</li>
+                                    <li>• Leaders committed to board diversity</li>
+                                    <li>• Professionals with C-suite aspirations</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="text-center">
+                                <div class="text-2xl font-bold text-gray-800 mb-2">$8,500</div>
+                                <div class="text-sm text-gray-600 mb-4">20-week comprehensive program</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Program Comparison -->
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Compare Programs</h2>
+                <p class="text-xl text-gray-600">Find the program that best fits your career goals and current level</p>
+            </div>
+
+            <div class="comparison-table reveal stagger-delay-1">
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left font-semibold text-gray-800">Feature</th>
+                                <th class="px-6 py-4 text-center font-semibold text-blue-600">Power & Influence</th>
+                                <th class="px-6 py-4 text-center font-semibold text-green-600">Promotion Strategy</th>
+                                <th class="px-6 py-4 text-center font-semibold text-purple-600">Get On Board</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-800">Duration</td>
+                                <td class="px-6 py-4 text-center text-blue-600">12 weeks</td>
+                                <td class="px-6 py-4 text-center text-green-600">16 weeks</td>
+                                <td class="px-6 py-4 text-center text-purple-600">20 weeks</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-800">Target Level</td>
+                                <td class="px-6 py-4 text-center text-blue-600">Mid to Senior</td>
+                                <td class="px-6 py-4 text-center text-green-600">Senior to Executive</td>
+                                <td class="px-6 py-4 text-center text-purple-600">Executive</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-800">Investment</td>
+                                <td class="px-6 py-4 text-center text-blue-600">$4,500</td>
+                                <td class="px-6 py-4 text-center text-green-600">$6,500</td>
+                                <td class="px-6 py-4 text-center text-purple-600">$8,500</td>
+                            </tr>
+                            <tr class="bg-gray-50">
+                                <td class="px-6 py-4 font-medium text-gray-800">1-on-1 Sessions</td>
+                                <td class="px-6 py-4 text-center text-blue-600">8 sessions</td>
+                                <td class="px-6 py-4 text-center text-green-600">12 sessions</td>
+                                <td class="px-6 py-4 text-center text-purple-600">16 sessions</td>
+                            </tr>
+                            <tr>
+                                <td class="px-6 py-4 font-medium text-gray-800">Success Rate</td>
+                                <td class="px-6 py-4 text-center text-blue-600">82%</td>
+                                <td class="px-6 py-4 text-center text-green-600">85%</td>
+                                <td class="px-6 py-4 text-center text-purple-600">78%</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Stories -->
+    <section class="py-20">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Success Stories by Program</h2>
+                <p class="text-xl text-gray-600">Real results from professionals who transformed their careers</p>
+            </div>
+
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Power & Influence Success -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg reveal stagger-delay-1">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Power & Influence Results</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <div class="font-semibold text-gray-800">Sarah M.</div>
+                            <div class="text-sm text-gray-600 mb-2">Senior Manager → VP Marketing</div>
+                            <p class="text-gray-700 text-sm">"Built a strategic network that led to a promotion within 6 months. The influence mapping was game-changing."</p>
+                        </div>
+                        <div class="border-l-4 border-blue-500 pl-4">
+                            <div class="font-semibold text-gray-800">David L.</div>
+                            <div class="text-sm text-gray-600 mb-2">Director → SVP Operations</div>
+                            <p class="text-gray-700 text-sm">"Developed executive presence that transformed how I'm perceived in the organization."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Promotion Strategy Success -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg reveal stagger-delay-2">
+                    <div class="w-16 h-16 bg-gradient-to-r from-green-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Promotion Strategy Results</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <div class="font-semibold text-gray-800">Maria R.</div>
+                            <div class="text-sm text-gray-600 mb-2">Manager → Director of Sales</div>
+                            <p class="text-gray-700 text-sm">"The 90-day integration plan helped me succeed in a new company and industry. Absolutely essential."</p>
+                        </div>
+                        <div class="border-l-4 border-green-500 pl-4">
+                            <div class="font-semibold text-gray-800">James K.</div>
+                            <div class="text-sm text-gray-600 mb-2">Senior Director → VP Finance</div>
+                            <p class="text-gray-700 text-sm">"Strategic positioning framework gave me clarity on my value proposition and career direction."</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Board Diversity Success -->
+                <div class="bg-white rounded-2xl p-8 shadow-lg reveal stagger-delay-3">
+                    <div class="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-600 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Get On Board Results</h3>
+                    <div class="space-y-4">
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <div class="font-semibold text-gray-800">Lisa C.</div>
+                            <div class="text-sm text-gray-600 mb-2">C-Suite Executive → Board Member</div>
+                            <p class="text-gray-700 text-sm">"The governance training and placement strategy were invaluable. Secured a board seat within 8 months."</p>
+                        </div>
+                        <div class="border-l-4 border-purple-500 pl-4">
+                            <div class="font-semibold text-gray-800">Robert H.</div>
+                            <div class="text-sm text-gray-600 mb-2">CEO → Multiple Board Roles</div>
+                            <p class="text-gray-700 text-sm">"Transformed my understanding of board dynamics and fiduciary responsibilities."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Frequently Asked Questions</h2>
+                <p class="text-xl text-gray-600">Common questions about our coaching programs</p>
+            </div>
+
+            <div class="space-y-6">
+                <div class="bg-white rounded-lg shadow-sm reveal stagger-delay-1">
+                    <button onclick="toggleFAQ(1)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-800">How do I know which program is right for me?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-1">
+                        <p>We recommend taking our career assessment on the homepage, which will analyze your goals and challenges to suggest the most suitable program. Additionally, we offer complimentary consultations to discuss your specific situation and recommend the best path forward.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm reveal stagger-delay-2">
+                    <button onclick="toggleFAQ(2)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-800">What if I need to pause or reschedule sessions?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-2">
+                        <p>We understand that professional commitments can change. All programs include flexible scheduling options, and you can pause your program for up to 30 days if needed. We work with you to ensure the coaching fits your schedule and priorities.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm reveal stagger-delay-3">
+                    <button onclick="toggleFAQ(3)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-800">Do you offer payment plans?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-3">
+                        <p>Yes, we offer flexible payment plans to make our programs accessible. You can choose to pay in full upfront for a 10% discount, or spread payments across the program duration. Corporate sponsorships and employer reimbursement programs are also welcome.</p>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-sm reveal stagger-delay-1">
+                    <button onclick="toggleFAQ(4)" class="w-full px-6 py-4 text-left flex justify-between items-center hover:bg-gray-50 transition-colors">
+                        <span class="font-semibold text-gray-800">What happens after the program ends?</span>
+                        <svg class="w-5 h-5 text-gray-500 transform transition-transform" id="faq-icon-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </button>
+                    <div class="hidden px-6 pb-4 text-gray-600" id="faq-content-4">
+                        <p>All program graduates receive ongoing support including quarterly check-ins, access to our alumni network, and continued resources. We also offer maintenance coaching sessions and advanced programs for continued growth. Your success is our priority beyond the program completion.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="py-20 bg-gradient-to-r from-gray-800 to-gray-900 text-white">
+        <div class="max-w-4xl mx-auto px-6 text-center">
+            <h2 class="text-4xl font-bold mb-6">Ready to Transform Your Career?</h2>
+            <p class="text-xl mb-8 text-gray-300">
+                Schedule a complimentary consultation to discuss which program is right for you and create your personalized development plan.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="contact.html" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold">
+                    Book Consultation
+                </a>
+                <a href="index.html" class="border-2 border-white text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-white hover:text-gray-800 transition-all">
+                    Take Assessment
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center">
+                <div class="text-2xl font-bold mb-4">Kaizen Career Coaching</div>
+                <p class="text-gray-400 mb-6">Transforming careers through continuous improvement since 2009</p>
+                <div class="text-gray-500 text-sm">
+                    © 2024 Kaizen Research and Training. All rights reserved.
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Services page specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeScrollEffects();
+            initializeNavigation();
+        });
+
+        // Initialize scroll effects
+        function initializeScrollEffects() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.reveal').forEach(el => {
+                observer.observe(el);
+            });
+        }
+
+        // Initialize navigation
+        function initializeNavigation() {
+            const navbar = document.getElementById('navbar');
+            
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    navbar.classList.add('nav-sticky');
+                } else {
+                    navbar.classList.remove('nav-sticky');
+                }
+            });
+        }
+
+        // Toggle program details
+        function toggleProgram(programId) {
+            const content = document.getElementById(programId + '-content');
+            const card = document.getElementById(programId + '-card');
+            
+            if (content.classList.contains('expanded')) {
+                content.classList.remove('expanded');
+                card.classList.remove('expanded');
+            } else {
+                // Close all other programs first
+                document.querySelectorAll('.program-content').forEach(el => {
+                    el.classList.remove('expanded');
+                });
+                document.querySelectorAll('.program-card').forEach(el => {
+                    el.classList.remove('expanded');
+                });
+                
+                // Open selected program
+                content.classList.add('expanded');
+                card.classList.add('expanded');
+                
+                // Scroll to program
+                setTimeout(() => {
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 200);
+            }
+        }
+
+        // Book program consultation
+        function bookProgram(programId) {
+            // Store selected program in session storage
+            sessionStorage.setItem('selectedProgram', programId);
+            window.location.href = 'contact.html';
+        }
+
+        // Scroll to programs section
+        function scrollToPrograms() {
+            document.getElementById('programs-section').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        }
+
+        // Toggle FAQ
+        function toggleFAQ(faqId) {
+            const content = document.getElementById('faq-content-' + faqId);
+            const icon = document.getElementById('faq-icon-' + faqId);
+            
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(180deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // Show best fit badges based on assessment results
+        function showBestFit(programId) {
+            const badge = document.getElementById(programId + '-badge');
+            if (badge) {
+                badge.classList.remove('hidden');
+            }
+        }
+
+        // Check for assessment results on page load
+        window.addEventListener('load', function() {
+            const assessmentResults = sessionStorage.getItem('assessmentResults');
+            if (assessmentResults) {
+                const results = JSON.parse(assessmentResults);
+                // Show best fit badge based on assessment results
+                showBestFit(results.primaryProgram || 'power-influence');
+            }
+        });
+    </script>
+</body>
+</html>
